@@ -1,0 +1,162 @@
+#STGradient
+#Sun Oct 22 20:14:44 UTC 2023
+JVMLevel=
+LSID=urn\:lsid\:genepattern.org\:module.analysis\:00465\:999999999
+author=Thorin Tabor;UCSD - Mesirov Lab
+commandLine=Rscript /spatialGE/wrapper.R --file <p1_file> --ngenes <p2_ngenes> --robust <p3_robust.regression> --ignore <p4_ignore.outliers> --limit <p5_correlation.limit> --neighbors <p6_min.neighbors> --distance <p7_distance.summary> --samples <p8_samples> --annotation <p9_annotation.to.test> --cluster <p10_reference.cluster> --exclude <p11_exclude.clusters>
+cpuType=any
+description=spatialGE.STgradient module for GenePattern to detect peri-cellular gene expression gradient by Spatial Correlation
+documentationUrl=https\://genepattern.github.io/spatialGE.STgradient/v1/
+fileFormat=csv,rds
+job.cpuCount=
+job.docker.image=genepattern/spatialge-stgradient\:0.2
+job.memory=
+job.walltime=
+language=any
+categories=single-cell
+name=STGradient
+os=any
+p1_MODE=IN
+p1_TYPE=FILE
+p1_default_value=
+p1_description=input.file\ (RDS\ file\ containing\ spatial\ transcriptomics\ data\ as\ produced\ by\ the\ spatialpreprocess\ module.)
+p1_fileFormat=rds
+p1_flag=-f
+p1_name=file
+p1_numValues=1..1
+p1_optional=
+p1_prefix=
+p1_prefix_when_specified=
+p1_type=java.io.File
+p1_value=
+p2_MODE=
+p2_TYPE=Integer
+p2_default_value=500
+p2_description=num.variable.genes\=The\ number\ of\ genes\ most\ correlated\ with\ mean\ pellet.distance\ to\ each\ cell\ to\ be\ retured\ to\ the\ were\ ST.gradient\ is\ performed.
+p2_fileFormat=
+p2_flag=-v
+p2_name=ngenes
+p2_numValues=0..1
+p2_optional=on
+p2_prefix=
+p2_prefix_when_specified=
+p2_type=Integer
+p2_value=
+p3_MODE=
+p3_TYPE=TEXT
+p3_default_value=True
+p3_description=robust.regression\=Should\ the\ ST.gradient\ procedure\ be\ run\ with\ the\ Robust\ Regression\ method\ as\ opposed\ to\ ordinary\ least\ squares\ regression\?.
+p3_fileFormat=
+p3_flag=-r
+p3_name=robust
+p3_numValues=0..1
+p3_optional=on
+p3_prefix=
+p3_prefix_when_specified=
+p3_type=TEXT
+p3_value=True\=True;False\=False
+p4_MODE=
+p4_TYPE=TEXT
+p4_default_value=False
+p4_description=ignore.outliers\=If\ there\ are\ some\ spatial\ coordinates\ for\ which\ total\ counts\ is\ less\ than\ 70\%.\ total\ counts\ of\ all\ spots\ the\ gene's\ correlation\ to\ each\ pellet\ will\ be\ calculated\ is\ ignored\ (No\ such\ outlier\ consideration\ is\ made\ in\ the\ case\ of\ the\ Sample\ mean\ or\ Sample\ Median\ correlation\ statistic).
+p4_fileFormat=
+p4_flag=-i
+p4_name=ignore
+p4_numValues=0..1
+p4_optional=on
+p4_prefix=
+p4_prefix_when_specified=
+p4_type=TEXT
+p4_value=True\=True;False\=False
+p5_MODE=
+p5_TYPE=Floating Point
+p5_default_value=
+p5_description=correlation.limit\=If\ there\ is\ a\ specified\ correlation\ limit,\ genes\ with\ a\ mean\ sample\ correlation\ to\ pellet\ distances\ greater\ than\ that\ limit\ will\ be\ excluded\ from\ ST.gradient\ calculation.
+p5_fileFormat=
+p5_flag=-l
+p5_name=limit
+p5_numValues=0..1
+p5_optional=on
+p5_prefix=
+p5_prefix_when_specified=
+p5_type=Floating Point
+p5_value=
+p6_MODE=
+p6_TYPE=Integer
+p6_default_value=10
+p6_description=min.neighbors\=The\ minimum\ number\ of\ neighbors\ within\ which\ spatial\ correlation\ is\ calculated\ for\ each\ cell\ (pellet).\ If\ the\ number\ of\ neighbors\ is\ less\ than\ minimun\ neighbors,\ correlation\ is\ not\ computed\ for\ that\ cell\ (pellet).
+p6_fileFormat=
+p6_flag=-n
+p6_name=neighbors
+p6_numValues=0..1
+p6_optional=on
+p6_prefix=
+p6_prefix_when_specified=
+p6_type=Integer
+p6_value=
+p7_MODE=
+p7_TYPE=TEXT
+p7_default_value=mean
+p7_description=distance.summary\=Indicate\ whether\ the\ "Mean"\ or\ "Median"\ distances\ to\ each\ pellet\ is/are\ used\ in\ the\ correlation\ calculation\ with\ each\ cell\ (pellet) .
+p7_fileFormat=
+p7_flag=-d
+p7_name=distance
+p7_numValues=0..1
+p7_optional=on
+p7_prefix=
+p7_prefix_when_specified=
+p7_type=TEXT
+p7_value=mean\=mean;median\=median
+p8_MODE=
+p8_TYPE=TEXT
+p8_default_value=
+p8_description=samples\=Select\ specific\ samples\ to\ test\ (Input\ as\ a\ vector\ of\ Sample\ IDs\ such\ as\ "S1,S2,S3".\ If\ left\ blank,\ all\ samples\ will\ be\ considered.\ )
+p8_fileFormat=
+p8_flag=-s
+p8_name=samples
+p8_numValues=0..1
+p8_optional=on
+p8_prefix=
+p8_prefix_when_specified=
+p8_type=TEXT
+p8_value=
+p9_MODE=
+p9_TYPE=TEXT
+p9_default_value=
+p9_description=annotation.to.test\=Name\ of\ annotation\ vector\ in\ spatial\ data\ to\ be\ tested\ for\ gradient\ expression.\ If\ left\ blank,\ the\ gene gradient will\ be\ calculated\ for\ all\ spatial\ coordinates.
+p9_fileFormat=
+p9_flag=-a
+p9_name=annotation
+p9_numValues=0..1
+p9_optional=on
+p9_prefix=
+p9_prefix_when_specified=
+p9_type=TEXT
+p9_value=
+p10_MODE=
+p10_TYPE=TEXT
+p10_default_value=
+p10_description=reference.cluster\=Sample\ ID\ or\ Annotation\ label\ to\ be\ used\ as\ the\ reference\ for\ ST.gradient.\ If\ no\ reference\ is\ given,\ the\ first\ Sample\ ID\ or\ Annotation\ label\ will\ be\ used\ as\ the\ reference.
+p10_fileFormat=
+p10_flag=-c
+p10_name=cluster
+p10_numValues=0..1
+p10_optional=on
+p10_prefix=
+p10_prefix_when_specified=
+p10_type=TEXT
+p10_value=
+p11_MODE=
+p11_TYPE=TEXT
+p11_default_value=
+p11_description=exclude.clusters\=Samples/Annotations\ IDs\ to\ be\ excluded\ from\ consideration\ in\ ST.gradient\ calculation\ (input\ as\ a\ vector\ such\ as\ "S1,S2,S3"\ or\ Annotation\ IDs\ such\ as\ "A,B,C").\ If\ left\ blank,\ no\ samples/annotations\ will\ be\ excluded.
+p11_fileFormat=
+p11_flag=-e
+p11_name=exclude
+p11_numValues=0..1
+p11_optional=on
+p11_prefix=
+p11_prefix_when_specified=
+p11_type=TEXT
+p11_value=
+taskType=single-cell
